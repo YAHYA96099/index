@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Unexpected Train Journey</title>
+<style>
+    @import url('https://fonts.cdnfonts.com/css/agency-fb');
+
+    body {
+        font-family: 'Agency FB', sans-serif;
+        font-size: 32px;
+        background-color: #000;
+        color: #00FF00;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    h1 {
+        text-align: center;
+        color: #00FF00;
+        margin-bottom: 20px;
+        font-size: 40px;
+        animation: flicker 1.5s infinite alternate;
+    }
+
+    #storyContainer {
+        background-color: #000;
+        padding: 20px;
+        border: 2px solid #00FF00;
+        border-radius: 8px;
+        max-width: 900px;
+        width: 100%;
+        margin-bottom: 30px;
+        box-shadow: 0 0 15px #00FF00;
+    }
+
+    #storyText {
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        line-height: 1.6;
+        min-height: 400px;
+        opacity: 0;
+        font-size: 32px;
+    }
+
+    #rateButton {
+        padding: 20px 50px;
+        font-size: 32px;
+        background-color: #000;
+        color: #00FF00;
+        border: 2px solid #00FF00;
+        border-radius: 8px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s;
+        box-shadow: 0 0 10px #00FF00;
+        margin-bottom: 40px;
+    }
+
+    #rateButton:hover {
+        background-color: #00FF00;
+        color: #000;
+        box-shadow: 0 0 20px #00FF00;
+    }
+
+    @keyframes flicker {
+        0% { opacity: 1; }
+        50% { opacity: 0.6; }
+        100% { opacity: 1; }
+    }
+</style>
+</head>
+<body>
+<h1>The Unexpected Train Journey</h1>
+
+<div id="storyContainer">
+    <div id="storyText"></div>
+</div>
+
+<a id="rateButton" href="https://docs.google.com/forms/d/e/1FAIpQLScASxl21imfZLc_gNt6myrMxe_6TavdQx67oLyDd1x2v835UA/viewform?usp=dialog" target="_blank">Rate this story</a>
+
+<script>
+// Hacker-style fast story animation
+const story = `Last summer, I experienced something that completely changed the way I see life. I was travelling alone by train to visit my cousin in Alexandria. Everything was going normally until the train suddenly stopped in the middle of nowhere. The air conditioning stopped working, and people began to complain loudly.
+
+At first, I felt nervous and impatient because I had an important meeting the next day. However, after a few minutes, I noticed an old man sitting next to me. He smiled calmly and started telling stories about his travels when he was young. His adventures were fascinating and full of unexpected lessons.
+
+Slowly, the passengers became quieter and even started listening to him. The stressful situation turned into a peaceful and meaningful moment.
+
+When the train finally moved again, I realized that sometimes delays happen for a reason. That journey taught me patience and reminded me to appreciate simple conversations with strangers.`;
+
+const storyText = document.getElementById("storyText");
+storyText.style.opacity = 1;
+
+let i = 0;
+function hackerAnimate() {
+    if (i < story.length) {
+        const char = story.charAt(i);
+        storyText.innerHTML += `<span style="opacity:0.5;">${char}</span>`;
+        i++;
+        setTimeout(() => {
+            storyText.querySelectorAll('span')[i-1].style.opacity = 1;
+            hackerAnimate();
+        }, 5 + Math.random()*10); // faster typing
+    }
+}
+hackerAnimate();
+</script>
+</body>
+</html>
